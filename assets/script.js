@@ -32,15 +32,21 @@ for (let i = 0; i < nbSlide; i++){
 	divDots.innerHTML += span
 	// ajoutdot()
 }
+const dotBanner = document.querySelectorAll("#dots span")
+dotBanner[numero].classList.add("dot_selected") 
+// console.log(dotBanner)
+
+
 
 function slideSuivante() {
+	dotBanner[numero].classList.remove("dot_selected")  
 	if (numero < nbSlide - 1) {
 		numero++
 	} else {
 		numero = 0
 	}
 	console.log(numero)
-
+	dotBanner[numero].classList.add("dot_selected") 
 	imgBanner.src = "assets/images/slideshow/" + slides[numero].image
 	textBanner.innerHTML = slides[numero].tagLine	
 
@@ -48,13 +54,14 @@ function slideSuivante() {
 }
 
 function slidePrecedente() {
+	dotBanner[numero].classList.remove("dot_selected")  
 	if (numero > 0) {
 		numero--
 	} else {
 		numero = nbSlide - 1
 	}
 	console.log(numero)
-
+	dotBanner[numero].classList.add("dot_selected") 
 	imgBanner.src = "assets/images/slideshow/" + slides[numero].image
 	textBanner.innerHTML = slides[numero].tagLine
 }
@@ -62,5 +69,8 @@ function slidePrecedente() {
 
 precedent.addEventListener("click", slidePrecedente);
 suivant.addEventListener("click", slideSuivante);
+
+
+setInterval(slideSuivante, 4000)
 
 
