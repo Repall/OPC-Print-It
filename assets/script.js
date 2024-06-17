@@ -17,28 +17,50 @@ const slides = [
 	}
 ]
 
-console.log(slides)
+const nbSlide = slides.length
+const suivant = document.getElementById("flecheD")
+const precedent = document.getElementById("flecheG")
+let numero = 0
+const imgBanner = document.getElementById("banner-image")
+const textBanner = document.querySelector("#banner p")
 
-let flecheG = document.getElementById("flecheG")
-console.log(flecheG)
+for (let i = 0; i < nbSlide; i++){
+	let divDots = document.getElementById("dots")
 
-let flecheD = document.getElementById("flecheD")
-console.log(flecheD)
+	let span = `<span id="${i}" class="dot"></span>`
 
-flecheG.addEventListener("click", () => {
-	console.log("CLIQUE GAUCHE")
-});
+	divDots.innerHTML += span
+	// ajoutdot()
+}
 
-flecheD.addEventListener("click", () => {
-	console.log("CLIQUE DROIT")
-});
+function slideSuivante() {
+	if (numero < nbSlide - 1) {
+		numero++
+	} else {
+		numero = 0
+	}
+	console.log(numero)
 
-// for (let i = 0; flecheG.lenght; i++) {
-// 	let flecheactuel = flecheG[i]
-// 	console.log(flecheactuel)
+	imgBanner.src = "assets/images/slideshow/" + slides[numero].image
+	textBanner.innerHTML = slides[numero].tagLine	
 
-// 	flecheactuel.addeventlistener("click", (event) => {
-// 		fleche = event.target
-// 		console.log(`J'ai cliqué sur la flèche :`)
-// 	})
-// }
+
+}
+
+function slidePrecedente() {
+	if (numero > 0) {
+		numero--
+	} else {
+		numero = nbSlide - 1
+	}
+	console.log(numero)
+
+	imgBanner.src = "assets/images/slideshow/" + slides[numero].image
+	textBanner.innerHTML = slides[numero].tagLine
+}
+
+
+precedent.addEventListener("click", slidePrecedente);
+suivant.addEventListener("click", slideSuivante);
+
+
