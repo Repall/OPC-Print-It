@@ -8,7 +8,7 @@ const slides = [
 		"tagLine":"Tirages haute définition grand format <span>pour vos bureaux et events</span>"
 	},
 	{
-		"image":"slide3.jpg",
+		"image":"slide3.jpg", //image = clée
 		"tagLine":"Grand choix de couleurs <span>de CMJN aux pantones</span>"
 	},
 	{
@@ -24,17 +24,16 @@ let numero = 0
 const imgBanner = document.getElementById("banner-image")
 const textBanner = document.querySelector("#banner p")
 
+
 for (let i = 0; i < nbSlide; i++){
 	let divDots = document.getElementById("dots")
 
 	let span = `<span id="${i}" class="dot"></span>`
 
 	divDots.innerHTML += span
-	// ajoutdot()
 }
 const dotBanner = document.querySelectorAll("#dots span")
 dotBanner[numero].classList.add("dot_selected") 
-// console.log(dotBanner)
 
 
 
@@ -49,10 +48,7 @@ function slideSuivante() {
 	dotBanner[numero].classList.add("dot_selected") 
 	imgBanner.src = "assets/images/slideshow/" + slides[numero].image
 	textBanner.innerHTML = slides[numero].tagLine	
-
-
 }
-
 function slidePrecedente() {
 	dotBanner[numero].classList.remove("dot_selected")  
 	if (numero > 0) {
@@ -71,6 +67,4 @@ precedent.addEventListener("click", slidePrecedente);
 suivant.addEventListener("click", slideSuivante);
 
 
-setInterval(slideSuivante, 4000)
-
-
+setInterval(slideSuivante, 4000) //méthode
