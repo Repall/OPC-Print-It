@@ -1,6 +1,6 @@
 # Formation Développeur d'application - JavaScript 
 
-## Projet 4 : Kasa - Premiers pas sur le language JavaSript
+## Projet 4 : Print It - Premiers pas sur le language JavaSript
 
 ## Technologies :
 
